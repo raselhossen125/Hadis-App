@@ -8,8 +8,11 @@ class ChapterController extends GetxController {
   /// chapter List Loading
   RxBool chapterListLoading = false.obs;
 
-  /// Selected Book Name
-  RxString selectedBookName = ''.obs;
+  /// Selected Chapter Number
+  RxString selectedChapterNumber = ''.obs;
+
+  /// Selected Chapter Name
+  RxString selectedChapterName = ''.obs;
 
   /// chapter List
   RxList<ChapterModel> chapterList = <ChapterModel>[].obs;

@@ -8,6 +8,12 @@ class BookController extends GetxController {
   /// Book List Loading
   RxBool bookListLoading = false.obs;
 
+  /// Selected Book Name
+  RxString selectedBookName = ''.obs;
+
+  /// Selected Book Slug
+  RxString selectedBookSlug = ''.obs;
+
   /// Book List
   RxList<BookModel> bookList = <BookModel>[].obs;
 

@@ -27,6 +27,7 @@ class BookListScreen extends StatelessWidget {
                 child: Loading(),
               )
             : ListView.builder(
+                physics: BouncingScrollPhysics(),
                 padding: EdgeInsets.symmetric(horizontal: 16)
                     .copyWith(top: 12, bottom: 4),
                 itemCount: BookController.to.bookList.length,

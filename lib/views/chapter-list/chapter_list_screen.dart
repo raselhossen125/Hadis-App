@@ -1,3 +1,4 @@
+import 'package:api_learn/controllers/book_controller.dart';
 import 'package:api_learn/controllers/chapter_controller.dart';
 import 'package:api_learn/utils/color/my_app_color.dart';
 import 'package:api_learn/utils/widgets/chapter-item/chapter_item.dart';
@@ -14,7 +15,7 @@ class ChapterListScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: MyAppColor.bgColor,
       appBar: MyAppBar(
-        title: ChapterController.to.selectedBookName.value,
+        title: BookController.to.selectedBookName.value,
         isBack: true,
         centerTitle: true,
       ),
@@ -24,6 +25,7 @@ class ChapterListScreen extends StatelessWidget {
                 child: Loading(),
               )
             : ListView.builder(
+                physics: const BouncingScrollPhysics(),
                 padding: const EdgeInsets.symmetric(horizontal: 16)
                     .copyWith(top: 12, bottom: 4),
                 itemCount: ChapterController.to.chapterList.length,

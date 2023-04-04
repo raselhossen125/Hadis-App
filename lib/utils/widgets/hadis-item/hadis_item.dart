@@ -35,24 +35,43 @@ class HadisItem extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    'Book Name : ${hadisM.book!.bookName}',
+                    'Chapter Number : ${hadisM.chapter!.chapterNumber}',
                     style: const TextStyle(
                       color: MyAppColor.primaryColor,
-                      fontSize: 14,
-                      fontWeight: FontWeight.w700,
+                      fontSize: 13,
+                      fontWeight: FontWeight.w600,
                     ),
                   ),
                   Text(
                     'Hadis Number : ${hadisM.hadithNumber}',
                     style: const TextStyle(
                       color: MyAppColor.primaryColor,
-                      fontSize: 14,
-                      fontWeight: FontWeight.w700,
+                      fontSize: 13,
+                      fontWeight: FontWeight.w600,
                     ),
                   ),
                 ],
               ),
+              space2C,
+              Text(
+                'Book Name : ${hadisM.book!.bookName}',
+                style: const TextStyle(
+                  color: MyAppColor.primaryColor,
+                  fontSize: 13,
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
               space4C,
+              Text(
+                hadisM.hadithArabic!,
+                style: const TextStyle(
+                  color: MyAppColor.primaryColor,
+                  fontSize: 12,
+                  fontWeight: FontWeight.w400,
+                ),
+                textAlign: TextAlign.justify,
+              ),
+              space3C,
               Text(
                 hadisM.hadithEnglish!,
                 style: const TextStyle(

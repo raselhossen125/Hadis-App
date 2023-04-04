@@ -1,3 +1,4 @@
+import 'package:api_learn/controllers/chapter_controller.dart';
 import 'package:api_learn/controllers/hadis_controller.dart';
 import 'package:api_learn/models/chapterModel.dart';
 import 'package:api_learn/route/my_app_routes_name.dart';
@@ -21,13 +22,15 @@ class ChapterItem extends StatelessWidget {
       child: InkWell(
         onTap: () {
           Get.put(HadisController());
-          HadisController.to.selectedChapterName.value =
+          ChapterController.to.selectedChapterNumber.value =
               chapterM.chapterNumber!;
+          ChapterController.to.selectedChapterName.value =
+              chapterM.chapterEnglish!;
           Get.toNamed(MyAppRoutesName.hadisListcreen);
           HadisController.to.getAllhadisList();
         },
         child: Container(
-          height: 62,
+          height: 65,
           width: double.infinity,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(5),
@@ -47,7 +50,7 @@ class ChapterItem extends StatelessWidget {
                   'Chapter Number : ${chapterM.chapterNumber}',
                   style: const TextStyle(
                     color: MyAppColor.primaryColor,
-                    fontSize: 12,
+                    fontSize: 13,
                     fontWeight: FontWeight.w600,
                   ),
                   overflow: TextOverflow.ellipsis,
@@ -58,7 +61,7 @@ class ChapterItem extends StatelessWidget {
                   'Chapter Name : ${chapterM.chapterEnglish!}',
                   style: const TextStyle(
                     color: MyAppColor.primaryColor,
-                    fontSize: 12,
+                    fontSize: 13,
                     fontWeight: FontWeight.w600,
                   ),
                   overflow: TextOverflow.ellipsis,

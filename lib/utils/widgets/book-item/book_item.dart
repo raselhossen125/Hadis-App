@@ -1,3 +1,4 @@
+import 'package:api_learn/controllers/book_controller.dart';
 import 'package:api_learn/controllers/chapter_controller.dart';
 import 'package:api_learn/models/book_model.dart';
 import 'package:api_learn/route/my_app_routes_name.dart';
@@ -21,12 +22,13 @@ class BookItem extends StatelessWidget {
       child: InkWell(
         onTap: () {
           Get.put(ChapterController());
-          ChapterController.to.selectedBookName.value = bookM.bookName!;
+          BookController.to.selectedBookName.value = bookM.bookName!;
+          BookController.to.selectedBookSlug.value = bookM.bookSlug!;
           Get.toNamed(MyAppRoutesName.chapterListcreen);
           ChapterController.to.getAllchapterList(bookSlug: bookM.bookSlug!);
         },
         child: Container(
-          height: 70,
+          height: 87,
           width: double.infinity,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(5),
@@ -40,7 +42,7 @@ class BookItem extends StatelessWidget {
             children: [
               Container(
                 width: 67,
-                height: 72,
+                height: 89,
                 decoration: const BoxDecoration(
                   color: MyAppColor.primaryColor,
                   borderRadius: BorderRadius.only(
@@ -69,7 +71,7 @@ class BookItem extends StatelessWidget {
                         'Book Name : ${bookM.bookName!}',
                         style: const TextStyle(
                           color: MyAppColor.primaryColor,
-                          fontSize: 14,
+                          fontSize: 13,
                           fontWeight: FontWeight.w600,
                         ),
                         overflow: TextOverflow.ellipsis,
@@ -80,7 +82,7 @@ class BookItem extends StatelessWidget {
                         'Writer Name : ${bookM.writerName!}',
                         style: const TextStyle(
                           color: MyAppColor.primaryColor,
-                          fontSize: 12,
+                          fontSize: 13,
                           fontWeight: FontWeight.w600,
                         ),
                         overflow: TextOverflow.ellipsis,
@@ -88,11 +90,20 @@ class BookItem extends StatelessWidget {
                       ),
                       space1C,
                       Text(
+                        'Total Chapter : ${bookM.chaptersCount!}',
+                        style: const TextStyle(
+                          color: MyAppColor.primaryColor,
+                          fontSize: 12,
+                          fontWeight: FontWeight.w500,
+                        ),
+                      ),
+                      space1C,
+                      Text(
                         'Total Hadis : ${bookM.hadithsCount!}',
                         style: const TextStyle(
                           color: MyAppColor.primaryColor,
                           fontSize: 12,
-                          fontWeight: FontWeight.w600,
+                          fontWeight: FontWeight.w500,
                         ),
                       ),
                     ],

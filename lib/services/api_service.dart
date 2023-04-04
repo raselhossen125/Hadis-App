@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:api_learn/controllers/book_controller.dart';
 import 'package:api_learn/controllers/chapter_controller.dart';
 import 'package:api_learn/controllers/hadis_controller.dart';
 import 'package:api_learn/models/book_model.dart';
@@ -279,27 +280,15 @@ class ServiceAPI {
       {bool isPaginate = false}) async {
     List<HadisModel> hadisList = [];
     final response = await ServiceAPI.genericCall(
-      url: isPaginate
-          ? HadisController.to.hadisNextPageUrl.value
-          : '$baseUrl/hadiths/?$apiKey',
+      url:
+          '$baseUrl/hadiths/?$apiKey&book=${BookController.to.selectedBookSlug.toString()}&chapter=${ChapterController.to.selectedChapterNumber}&paginate=25',
       httpMethod: HttpMethod.get,
     );
     globalLogger.d(response, "Get Hadis List Route");
 
     if (response['status'] != null && response['status'] == 200) {
       response['hadiths']['data'].forEach((element) {
-        if (ChapterController.to.selectedBookName ==
-                element['book']['bookName'] &&
-            HadisController.to.selectedChapterName ==
-                element['chapter']['chapterNumber']) {
-          hadisList.add(HadisModel.fromJson(element));
-        }
-        if (response['hadiths']['next_page_url'] != null) {
-          HadisController.to
-              .hadisNextPageUrl(response['hadiths']['next_page_url']);
-        } else {
-          HadisController.to.hadisNextPageUrl('');
-        }
+        hadisList.add(HadisModel.fromJson(element));
       });
     } else if (response['status'] != null && response['status'] != 200) {
       showAlert(response['message']);
