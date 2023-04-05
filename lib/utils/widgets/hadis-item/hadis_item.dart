@@ -53,7 +53,7 @@ class HadisItem extends StatelessWidget {
                 ],
               ),
               space4C,
-              Text(
+              SelectableText(
                 hadisM.hadithArabic!,
                 style: const TextStyle(
                   color: MyAppColor.primaryColor,
@@ -63,7 +63,7 @@ class HadisItem extends StatelessWidget {
                 textAlign: TextAlign.justify,
               ),
               space3C,
-              Text(
+              SelectableText(
                 hadisM.hadithEnglish!,
                 style: const TextStyle(
                   color: MyAppColor.primaryColor,
