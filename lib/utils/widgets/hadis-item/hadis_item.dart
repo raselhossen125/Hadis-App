@@ -1,9 +1,11 @@
 import 'package:api_learn/models/hadis_model.dart';
 import 'package:api_learn/utils/color/my_app_color.dart';
 import 'package:api_learn/utils/constants/constants.dart';
+import 'package:api_learn/utils/widgets/common_widgets.dart';
 import 'package:flutter/material.dart';
+import 'package:translator/translator.dart';
 
-class HadisItem extends StatelessWidget {
+class HadisItem extends StatefulWidget {
   const HadisItem({
     super.key,
     required this.hadisM,
@@ -11,6 +13,12 @@ class HadisItem extends StatelessWidget {
 
   final HadisModel hadisM;
 
+  @override
+  State<HadisItem> createState() => _HadisItemState();
+}
+
+class _HadisItemState extends State<HadisItem> {
+  Translation? translatedData;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -35,7 +43,7 @@ class HadisItem extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    'Chapter Number : ${hadisM.chapter!.chapterNumber}',
+                    'Chapter Number : ${widget.hadisM.chapter!.chapterNumber}',
                     style: const TextStyle(
                       color: MyAppColor.primaryColor,
                       fontSize: 13,
@@ -43,7 +51,7 @@ class HadisItem extends StatelessWidget {
                     ),
                   ),
                   Text(
-                    'Hadis Number : ${hadisM.hadithNumber}',
+                    'Hadis Number : ${widget.hadisM.hadithNumber}',
                     style: const TextStyle(
                       color: MyAppColor.primaryColor,
                       fontSize: 13,
@@ -54,7 +62,7 @@ class HadisItem extends StatelessWidget {
               ),
               space4C,
               SelectableText(
-                hadisM.hadithArabic!,
+                widget.hadisM.hadithArabic!,
                 style: const TextStyle(
                   color: MyAppColor.primaryColor,
                   fontSize: 12,
@@ -63,8 +71,42 @@ class HadisItem extends StatelessWidget {
                 textAlign: TextAlign.justify,
               ),
               space3C,
+              CustomButtoon(
+                label: 'Translate',
+                marginHorizontal: 0,
+                marginVertical: 0,
+                height: 34,
+                width: 85,
+                borderRadiusAll: 15,
+                isBorder: true,
+                labelColor: MyAppColor.primaryColor,
+                primary: MyAppColor.bgColor,
+                onPressed: () async {
+                  GoogleTranslator translator = GoogleTranslator();
+                  if (translatedData == null) {
+                    translatedData = await translator.translate(
+                        widget.hadisM.hadithEnglish!,
+                        from: 'en',
+                        to: 'bn');
+                  } else {
+                    translatedData!.sourceLanguage.code == 'en'
+                        ? translatedData = await translator.translate(
+                            widget.hadisM.hadithEnglish!,
+                            from: 'bn',
+                            to: 'en')
+                        : translatedData = await translator.translate(
+                            widget.hadisM.hadithEnglish!,
+                            from: 'en',
+                            to: 'bn');
+                  }
+                  setState(() {});
+                },
+              ),
+              space3C,
               SelectableText(
-                hadisM.hadithEnglish!,
+                translatedData == null
+                    ? widget.hadisM.hadithEnglish!
+                    : translatedData!.text,
                 style: const TextStyle(
                   color: MyAppColor.primaryColor,
                   fontSize: 12,

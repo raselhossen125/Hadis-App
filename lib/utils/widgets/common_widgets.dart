@@ -1,3 +1,4 @@
+import 'package:api_learn/utils/color/my_app_color.dart';
 import 'package:flutter/material.dart';
 
 class CustomButtoon extends StatelessWidget {
@@ -61,15 +62,6 @@ class CustomButtoon extends StatelessWidget {
         horizontal: marginHorizontal ?? 16,
         vertical: marginVertical ?? 36,
       ),
-      decoration: BoxDecoration(
-        boxShadow: [
-          BoxShadow(
-            offset: const Offset(0.0, 2.0),
-            blurRadius: 12,
-            color: boxShadowColor ?? const Color(0xffF37048).withOpacity(.12),
-          )
-        ],
-      ),
       child: ElevatedButton(
         onPressed: isDisable ? () {} : onPressed,
         style: ElevatedButton.styleFrom(
@@ -81,7 +73,7 @@ class CustomButtoon extends StatelessWidget {
               vertical: contentVerticalPadding ?? contentPadding ?? 8),
           shape: RoundedRectangleBorder(
             side: isBorder
-                ? const BorderSide(color: Colors.black, width: 1)
+                ? const BorderSide(color: MyAppColor.primaryColor, width: 1)
                 : BorderSide.none,
             borderRadius: BorderRadius.circular(borderRadiusAll ?? 4),
           ),

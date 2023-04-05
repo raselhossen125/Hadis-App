@@ -18,8 +18,7 @@ class SpalashScreen extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Image.asset('images/image/book_spalash.png', height: 150),
-              space2C,
+              Image.asset('images/image/book.png', height: 150),
               const Text(
                 'HADIS',
                 style: TextStyle(

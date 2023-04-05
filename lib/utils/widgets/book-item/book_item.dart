@@ -52,9 +52,9 @@ class BookItem extends StatelessWidget {
                 ),
                 child: Center(
                   child: Image.asset(
-                    'images/icon/book_icon.png',
-                    height: 30,
-                    width: 30,
+                    'images/image/book_spalash.png',
+                    height: 35,
+                    width: 35,
                     fit: BoxFit.fill,
                   ),
                 ),
