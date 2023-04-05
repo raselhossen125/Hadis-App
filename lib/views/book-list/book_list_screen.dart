@@ -20,6 +20,7 @@ class BookListScreen extends StatelessWidget {
         title: 'Book List',
         isBack: false,
         centerTitle: true,
+        elevation: 5,
       ),
       body: Obx(
         () => BookController.to.bookListLoading.value

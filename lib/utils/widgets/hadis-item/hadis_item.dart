@@ -52,15 +52,6 @@ class HadisItem extends StatelessWidget {
                   ),
                 ],
               ),
-              space2C,
-              Text(
-                'Book Name : ${hadisM.book!.bookName}',
-                style: const TextStyle(
-                  color: MyAppColor.primaryColor,
-                  fontSize: 13,
-                  fontWeight: FontWeight.w600,
-                ),
-              ),
               space4C,
               Text(
                 hadisM.hadithArabic!,

@@ -18,6 +18,7 @@ class HadisListScreen extends StatelessWidget {
         title: ChapterController.to.selectedChapterName.value,
         isBack: true,
         centerTitle: true,
+        elevation: 5,
       ),
       body: Obx(
         () => HadisController.to.hadisListLoading.value

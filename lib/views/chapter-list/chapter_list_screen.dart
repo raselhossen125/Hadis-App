@@ -18,6 +18,7 @@ class ChapterListScreen extends StatelessWidget {
         title: BookController.to.selectedBookName.value,
         isBack: true,
         centerTitle: true,
+        elevation: 5,
       ),
       body: Obx(
         () => ChapterController.to.chapterListLoading.value
